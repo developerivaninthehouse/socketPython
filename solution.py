@@ -1,7 +1,4 @@
 # import socket module
-from email import message
-from http import server
-from multiprocessing import connection
 from socket import *
 # In order to terminate the program
 import sys
@@ -10,7 +7,7 @@ def webServer(port=13331):
   serverSocket = socket(AF_INET, SOCK_STREAM)
   
   #Prepare a server socket
-  serverSocket.bind(("", port))
+  serverSocket.bind(("", 13331))
 
   #Fill in start
 
