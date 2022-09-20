@@ -41,7 +41,7 @@ def webServer(port=13331):
 
       #Send an HTTP header line into socket for a valid request. What header should be sent for a response that is ok? 
       #Fill in start
-      connectionSocket.send('HTTP/1.1 200 OK\r\n')     
+      connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n")     
 
       #Fill in end
 
