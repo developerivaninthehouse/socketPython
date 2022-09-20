@@ -54,7 +54,7 @@ def webServer(port=13331):
       # Send response message for invalid request due to the file not being found (404)
       #Fill in start
 
-      connectionSocket.send('HTTP/1.0 404 Not Found\r\n\r\n'.encode())
+      connectionSocket.send('HTTP/1.0 404 Not Found\r\n\r\n')
 
       #Fill in end
 
