@@ -7,7 +7,7 @@ def webServer(port=13331):
   serverSocket = socket(AF_INET, SOCK_STREAM)
   
   #Prepare a server socket
-  serverSocket.bind(("",13331))
+  serverSocket.bind(("",port))
 
   #Fill in start
   serverSocket.listen(1)
@@ -27,7 +27,7 @@ def webServer(port=13331):
       
       #opens the client requested file. 
       #Plenty of guidance online on how to open and read a file in python. How should you read it though if you plan on sending it through a socket?
-      f = open(filename[1:],'rb')  #fill in start #fill in end)
+      f = open(filename[1:],'r')  #fill in start #fill in end)
       #fill in end
    
 
