@@ -7,7 +7,7 @@ def webServer(port=13331):
   serverSocket = socket(AF_INET, SOCK_STREAM)
   
   #Prepare a server socket
-  serverSocket.bind(("",13331))
+  serverSocket.bind(("",port))
 
   #Fill in start
   serverSocket.listen(1)
@@ -35,12 +35,12 @@ def webServer(port=13331):
       outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"\
       #Fill in start -This variable can store your headers you want to send for any valid or invalid request. 
       #Content-Type above is an example on how to send a header as bytes
-      connectionSocket.send("\r\n".encode())  
+      connectionSocket.send(outputdata.encode())  
       #Fill in end
 
       #Send an HTTP header line into socket for a valid request. What header should be sent for a response that is ok? 
       #Fill in start
-      connectionSocket.send('HTTP/1.0 200 OK\r\n'.encode())
+      connectionSocket.send('HTTP/1.0 200 OK\r\n\r\n'.encode())
       
       connectionSocket.close()   
 
