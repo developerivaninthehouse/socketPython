@@ -42,8 +42,6 @@ def webServer(port=13331):
       #Fill in start
       connectionSocket.send('HTTP/1.0 200 OK\r\n\r\n'.encode())
       
-      connectionSocket.close()   
-
       #Fill in end
 
       #Send the content of the requested file to the client
