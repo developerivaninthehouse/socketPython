@@ -1,5 +1,7 @@
 # import socket module
+from email import message
 from http import server
+from multiprocessing import connection
 from socket import *
 # In order to terminate the program
 import sys
@@ -24,43 +26,46 @@ def webServer(port=13331):
     
 
     try:
-      message = input('your favor student Ivan Huang')#Fill in start -a client is sending you a message   #Fill in end 
+      #message = input('your favor student Ivan Huang')#Fill in start -a client is sending you a message   #Fill in end 
+      message = connectionSocket.recv(1024)
       filename = message.split()[1]
       
       #opens the client requested file. 
       #Plenty of guidance online on how to open and read a file in python. How should you read it though if you plan on sending it through a socket?
-      f = open(filename[1:],"r")  #fill in start #fill in end)
+      f = open(filename[1:],"rb")  #fill in start #fill in end)
       #fill in end
       
+
       outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"\
       #Fill in start -This variable can store your headers you want to send for any valid or invalid request. 
       #Content-Type above is an example on how to send a header as bytes
-
-      
-
-
-
+      connectionSocket.send(outputdata)
       #Fill in end
 
       #Send an HTTP header line into socket for a valid request. What header should be sent for a response that is ok? 
       #Fill in start
+      connectionSocket.send('HTTP/1.1 200 OK\r\n')     
 
       #Fill in end
 
       #Send the content of the requested file to the client
       for i in f: #for line in file
         #Fill in start - send your html file contents #Fill in end 
+        connectionSocket.send(f)
       connectionSocket.close() #closing the connection socket
       
     except Exception as e:
       # Send response message for invalid request due to the file not being found (404)
       #Fill in start
 
+      print('404 Not Found')
+
       #Fill in end
 
 
       #Close client socket
       #Fill in start
+      connectionSocket.close()
 
       #Fill in end
 
